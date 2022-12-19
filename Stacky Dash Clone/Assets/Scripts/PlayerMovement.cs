@@ -17,6 +17,8 @@ public class PlayerMovement : MonoBehaviour
     float deadZone = 100;
     public float speed;
 
+    public static bool isCameraNewPos = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -135,6 +137,14 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             isCollision = false;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("PathWallActive3"))
+        {
+            isCameraNewPos = true;
         }
     }
 }
